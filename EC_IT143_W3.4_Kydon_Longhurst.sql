@@ -32,10 +32,10 @@ FROM SalesLT.SalesOrderDetail
 GROUP BY ProductID
 ORDER BY OrderQty ASC
 
--- Q4: Which customers placed the largest total order during the past year, and how many orders did each customer submit?
--- A4:
+-- Q4: Which customers placed the largest total order during the past year, and how many orders did each customer submit? - Kydon Longhurst
+-- A4:  Get a list of all the customers, then filter by year, and count how many orders per customer
 SELECT CustomerID, SUM(TotalDue) AS TotalDue, COUNT(CustomerID) AS OrderCount
-  FROM [AdventureWorksLT2022].[SalesLT].[SalesOrderHeader]
+  FROM SalesLT.SalesOrderHeader
   WHERE YEAR(OrderDate) = 2008
   GROUP BY CustomerID
   ORDER BY TotalDue DESC
